@@ -1,15 +1,19 @@
 package org.example.company;
 
+import java.util.Objects;
+
 public class Car {
 
-    private final boolean engine = true;
+    private  boolean engine;
     private int cylinders;
     private String name;
-    private final int wheels = 4;
+    private int wheels;
 
     public Car(int cylinders, String name) {
         this.cylinders = cylinders;
         this.name = name;
+        this.engine = Boolean.TRUE;
+        this.wheels = 4;
     }
 
 
@@ -22,15 +26,18 @@ public class Car {
     }
 
     public String startEngine() {
-        return "Car -> " + getClass().getSimpleName() + " -> the car's engine is starting";
+        System.out.println("Class Name " + getClass().getSimpleName());
+        return "the car's engine is starting";
     }
 
     public String accelerate() {
-        return "Car -> " + getClass().getSimpleName() + " -> the car is accelerating";
+        System.out.println("Class Name " + getClass().getSimpleName());
+        return "the car is accelerating";
     }
 
     public String brake() {
-        return "Car -> " + getClass().getSimpleName() + " -> the car is braking";
+        System.out.println("Class Name " + getClass().getSimpleName());
+        return  "the car is braking";
     }
 
     public int getWheels() {
@@ -48,7 +55,15 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object car) {
-       return  ((Car)car).name.equals(this.name) && (cylinders == this.cylinders);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return cylinders == car.cylinders && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cylinders, name);
     }
 }

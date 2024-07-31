@@ -7,7 +7,6 @@ public class HybridCar extends CarSkeleton{
     private int cylinders;
 
 
-
     public HybridCar(String name, String description, double avgKmPerLitre, int batterySize, int cylinders) {
         super(name, description);
         this.avgKmPerLitre = avgKmPerLitre;
@@ -25,5 +24,16 @@ public class HybridCar extends CarSkeleton{
 
     public int getCylinders() {
         return cylinders;
+    }
+
+    @Override
+    public String drive() {
+        return "run from Hybrid car";
+    }
+
+    @Override
+    public String startEngine() {
+        runEngine(this);
+        return getName() + " car starting...";
     }
 }

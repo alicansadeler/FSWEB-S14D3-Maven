@@ -17,4 +17,15 @@ public class ElectricCar extends CarSkeleton{
     public double getAvgKmPerCharge() {
         return avgKmPerCharge;
     }
+
+    @Override
+    public String drive() {
+        return "run from Electronic car";
+    }
+
+    @Override
+    public String startEngine() {
+        runEngine(this);
+        return getName() + " car starting...";
+    }
 }
